@@ -23,6 +23,7 @@ void shell(config *build)
  * prompt display
  * @build: input build
  */
+
 void checkAndGetLine(config *build)
 {
 	register int len;
@@ -32,21 +33,28 @@ void checkAndGetLine(config *build)
 	build->args = NULL;
 	build->envList = NULL;
 	build->lineCounter++;
+
 	if (isatty(STDIN_FILENO))
 		displayPrompt();
+
 	len = getline(&build->buffer, &bufferSize, stdin);
+
 	if (len == EOF)
 	{
 		freeMembers(build);
+
 		if (isatty(STDIN_FILENO))
 			displayNewLine();
+
 		if (build->errorStatus)
 			exit(build->errorStatus);
+
 		exit(EXIT_SUCCESS);
 
 	}
 	ptr = _strchr(build->buffer, '\n');
 	ptr2 = _strchr(build->buffer, '\t');
+
 	if (ptr || ptr2)
 		insertNullByte(build->buffer, len - 1);
 	stripComments(build->buffer);
