@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 shell
 hsh
 sf-0119_shell_test_suite
 test
 temp/
 ls
+=======
+# Ignore Emacs buffer files
+*#
+*~
+
+# Ignore executable file
+*.out
+>>>>>>> 7cde2e64d64425bad0e51c2871ad5a973a19c6fb
